@@ -7,25 +7,23 @@
 
 import 'package:clubforce/app.dart';
 import 'package:clubforce/core/injection/injection_container.dart' as di;
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('App Loaded Test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await di.init();
     await tester.pumpWidget(const App());
 
     // Verify that our counter starts at 0.
     expect(find.text('Artist'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('Album'), findsNothing);
+    await tester.pumpAndSettle(const Duration(seconds: 5));
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    expect(find.text('Fennesz'), findsOneWidget);
+    await tester.tap(find.text('Fennesz'));
+    await tester.pumpAndSettle();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('Fennesz'), findsOneWidget);
   });
 }

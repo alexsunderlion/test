@@ -101,7 +101,10 @@ class _TopAlbumsPageState extends State<TopAlbumsPage> {
                           child: SizedBox(
                             height: 56,
                             width: 56,
-                            child: CircularProgressIndicator(),
+                            child: Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: CircularProgressIndicator(),
+                            ),
                           ),
                         );
                       }

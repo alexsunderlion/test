@@ -45,7 +45,6 @@ class ArtistBloc extends Bloc<ArtistEvent, ArtistState> {
             });
       }
     });
-    print('ArtistBloc constructor created');
   }
 
   final GetAllArtists getArtistsUseCase;
