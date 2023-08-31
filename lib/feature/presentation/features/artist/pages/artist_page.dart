@@ -20,7 +20,10 @@ class ArtistPage extends StatefulWidget implements AutoRouteWrapper {
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        return ArtistBloc(inject<GetAllArtists>())..add(const ArtistLoadEvent());
+        //return inject<ArtistBloc>()..add(const ArtistLoadEvent());
+        // Manual bloc creation for the injection problem on my system
+        return ArtistBloc(inject<GetAllArtists>())
+          ..add(const ArtistLoadEvent());
       },
       child: this,
     );
